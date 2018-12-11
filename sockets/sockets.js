@@ -6,9 +6,9 @@ module.exports = function (io) {
 
         let testObj = { 
             html: '<h1>Hello World</h1>', 
-            css: '', 
-            javascript: '', 
-            name: ''
+            css: '<style></style>', 
+            javascript: '<script></script>', 
+            name: 'Untitled Project'
         }
 
         db.Project.create(testObj);

@@ -21,6 +21,7 @@ $(document).ready(function () {
         })
     };
 
+
     // HTML Editor
     var editor = CodeMirror.fromTextArea(code, {
         mode: "xml",

@@ -100,9 +100,13 @@ app.route('/login')
 //Mongoose connection ** HAVE TO EDIT URI ***
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://localhost:27017/myapp');
-mongoose.connect(
-    process.env.MONGODB_URI ||  "mongodb://localhost:27017/codelaborate", {
- });
+
+// mongoose.connect(
+//     process.env.MONGODB_URI ||  "mongodb://localhost:27017/codelaborate", {
+//  });
+
+mongoose.connect('mongodb://codelabouser:codelabopass1@ds131954.mlab.com:31954/heroku_1m80w7kx', { useNewUrlParser: true });
+
 
  //// USER END ////
 
