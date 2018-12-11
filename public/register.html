@@ -5,21 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CODElaborate Registration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles.css" media="screen" title="no title">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
+    <link href="codemirror/lib/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Register: CODELABO</title>
 </head>
 
 <body>
-    <div class="h1">This is our registration page</div>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <div class="logo">CODELABO</div>
+
+    <div class="sign-in-modal">
+        <h2>Register</h2>
+        <form method="POST" class="reg-form" action="/api/register">
+            <input name="" class="text-input" id="username" placeholder="Enter a Username..." type="text">
+            <input class="text-input" id="userpass" placeholder="Enter a Password..." type="password">
+            <input class="text-input" id="userpassconf" placeholder="Repeat Password" type="password">
+            <button type="submit" id="createAccount" class="btn">Create Account</button>
+        </form>
+        <p>Have an account? &nbsp; <a href="/">Log In</a></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+
 </body>
 
 </html>

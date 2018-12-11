@@ -11,7 +11,6 @@ module.exports = function (io) {
             name: ''
         }
 
-
         db.Project.create(testObj);
         console.log('connected');
 

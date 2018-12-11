@@ -1,63 +1,35 @@
-<!doctype html>
-
+<!DOCTYPE html>
+<html lang="en">
+	
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="codemirror/lib/codemirror.css" rel="stylesheet">
-    <link rel="stylesheet" href="codemirror/theme/monokai.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>CODELABO</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="codemirror/lib/codemirror.css" rel="stylesheet">
+	<link rel="stylesheet" href="codemirror/theme/monokai.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Login: CODELABO</title>
 </head>
 
 <body>
 
-    <form>
-        <div class="edit-col">
-            <h2 id="project-title">CODELABO</h2>
+	<div class="logo">CODELABO</div>
 
-            <label>HTML</label>
-            <textarea id="htmlEditor"><h1>Hello World</h1></textarea>
+	<div class="sign-in-modal">
+		<h2>Sign In</h2>
+		<form>
+			<input type="text" id="loginuser" class="text-input" placeholder="username">
+			<input type="password" id="loginpass" class="text-input" placeholder="password">
+			<input type="submit" value="Login" class="btn" id="LoginAccount">
+		</form>
+		<p>Don't have an account? &nbsp; <a href="/register">Sign Up</a></p>
+	</div>
 
-            <label>CSS</label>
-            <textarea id="cssEditor">
-<style>
-    h1 {
-        color: red;
-    }
-</style>
-</textarea>
-
-            <label>JS</label>
-            <textarea id="jsEditor"><script></script></textarea>
-
-        </div>
-
-        <div class="preview-col">
-            <Label>Preview</label>
-            <iframe id="preview"></iframe>
-        </div>
-
-        <!-- <div class="project-col">
-            <button>New Project</button>
-            <div id="projectlist">
-            </div>
-            <div class="username">Username</div>
-        </div> -->
-
-    </form>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-
-    <script src="codemirror/lib/codemirror.js"></script>
-    <script src="codemirror/mode/xml/xml.js"></script>
-    <script src="codemirror/mode/css/css.js"></script>
-    <script src="codemirror/mode/javascript/javascript.js"></script>
-    <script src="codemirror/addon/edit/closetag.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-
-    <script src="js/app.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script src="js/login.js"></script>
 
 </body>
+
+</html>

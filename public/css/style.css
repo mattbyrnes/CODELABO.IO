@@ -1,10 +1,55 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
 }
 
 label {
 	display: none;
+}
+
+.logo {
+    display: none;
+    display: block;
+    width: 400px;
+    margin: 100px auto 20px;
+}
+
+.sign-in-modal {
+    display: block;
+    width: 400px;
+    height: 280px;
+    background: #eee;
+    border-radius: 10px;
+    margin: 10px auto 0px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sign-in-modal h2 {
+    margin-bottom: 20px;
+}
+
+.sign-in-modal p {
+    text-align: center;
+}
+
+.sign-in-modal .btn {
+   display: block;
+   margin: 10px auto 20px; 
+   background: blue;
+   color: #fff;
+   padding: 10px 20px;
+   box-sizing: border-box;
+   border: 0px;
+   border-radius: 10px;
+}
+
+
+.text-input {
+    width: 100%;
+    height: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 .CodeMirror {
