@@ -4,9 +4,6 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user.js');
 
-
-
-
 module.exports = function(app){
 
     app.get('/', (req, res)=>{
@@ -16,12 +13,8 @@ module.exports = function(app){
         console.log("in register")
         res.sendFile(path.join(__dirname + '/../public/register.html'));
     })
-
     app.get('/login', (req,res)=> {
         res.sendFile(path.join(__dirname + '/../public/login.html'));
     })
-
-  
-
 
 }
