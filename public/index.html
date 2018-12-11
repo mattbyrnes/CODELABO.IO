@@ -1,0 +1,63 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="codemirror/lib/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CODELABO</title>
+</head>
+
+<body>
+
+    <form>
+        <div class="edit-col">
+            <h2 id="project-title">CODELABO</h2>
+
+            <label>HTML</label>
+            <textarea id="htmlEditor"><h1>Hello World</h1></textarea>
+
+            <label>CSS</label>
+            <textarea id="cssEditor">
+<style>
+    h1 {
+        color: red;
+    }
+</style>
+</textarea>
+
+            <label>JS</label>
+            <textarea id="jsEditor"><script></script></textarea>
+
+        </div>
+
+        <div class="preview-col">
+            <Label>Preview</label>
+            <iframe id="preview"></iframe>
+        </div>
+
+        <!-- <div class="project-col">
+            <button>New Project</button>
+            <div id="projectlist">
+            </div>
+            <div class="username">Username</div>
+        </div> -->
+
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/mode/xml/xml.js"></script>
+    <script src="codemirror/mode/css/css.js"></script>
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/addon/edit/closetag.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>

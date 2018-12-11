@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+}
+
+label {
+	display: none;
+}
+
+.CodeMirror {
+    height: 30vh;
+    margin-bottom: 1px;
+    padding-top: 6px;
+ }
+
+ #project-title {
+    width: 100%;
+    background: blue;
+    color: #fff;
+    margin-bottom: 1px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#preview {
+    width: 100%;
+    height: 99vh;
+}
+
+.edit-col {
+    width: 31vw;
+    max-height: 100vh;
+	float: left;
+}
+
+.preview-col {
+    width: 67vw;
+    height: 100vh;
+    float: right;
+}
+
+.project-col {
+    width: 20vw;
+    height: 100vh;
+    float: right;
+    background: #eee;
+    font-size: 11px;
+    padding: 10px;
+    box-sizing: border-box;
+}
