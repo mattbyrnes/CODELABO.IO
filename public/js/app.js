@@ -21,7 +21,6 @@ $(document).ready(function () {
         })
     };
 
-
     // HTML Editor
     var editor = CodeMirror.fromTextArea(code, {
         mode: "xml",
@@ -40,8 +39,12 @@ $(document).ready(function () {
             html: editor.getValue()
         };
         socket.emit("codechange", msg);
-    });
 
+        $.ajax({url: "/api/project", method:"GET"}).then(dataFromDB => {
+            console.log(dataFromDB)
+            code = dataFromDB[0].html
+        });
+    });
     // CSS Editor
     var editorCSS = CodeMirror.fromTextArea(cssCode, {
         mode: "css",
@@ -60,6 +63,10 @@ $(document).ready(function () {
             css: editorCSS.getValue()
         };
         socket.emit("codechange", msg);
+        $.ajax({url: "/api/project", method:"GET"}).then(dataFromDB => {
+            console.log(dataFromDB)
+            cssCode = dataFromDB[0].css
+        });
     });
 
     // JS Editor
@@ -98,5 +105,4 @@ $(document).ready(function () {
         preview.close();
     }
     setTimeout(updatePreview, 300);
-
 });

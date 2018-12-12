@@ -1,27 +1,30 @@
 const db = require('../models');
 
 module.exports = function (io) {
-
+let dbID;
     io.on('connection', (socket) => {
-
-        let testObj = { 
-            html: '<h1>Hello World</h1>', 
-            css: '<style></style>', 
-            javascript: '<script></script>', 
-            name: 'Untitled Project'
+        let testObj = {
+            html: '',
+            css: '',
+            javascript: '',
+            name: ''
         }
-
-        db.Project.create(testObj);
-        console.log('connected');
-
         socket.on('codechange', (data) => {
+            db.Project.find({})
+            .then(allData =>{
+                if(allData.length == 0){
+                    db.Project.create(testObj)
+                    .then( firstAndOnlyEntry => {
+                        dbID = firstAndOnlyEntry._id
+                    })
+                } else { 
+                    dbID = allData[0]._id
+                    db.Project.findByIdAndUpdate({ _id: dbID }, { $set: data })
+                    .catch(err => { console.log(err) })
 
-            db.Project.findByIdAndUpdate({ _id: data._id }, { $set: data })
-                .catch(err => { console.log(err) })
-
-            io.emit('codechange', {
-                message: data
-            });
+                }
+            })
+            .catch(err => {console.log(err)})
         });
 
     });
