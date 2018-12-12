@@ -33,13 +33,15 @@ $(document).ready(function () {
         foldGutter: true,
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
     });
-    editor.on('change', function () {
+    editor.on('change', function (data) {
         clearTimeout(delay);
         delay = setTimeout(updatePreview, 300);
+        var code = editor.getValue();
+        var code = data
         var msg = {
             html: editor.getValue()
         };
-        socket.emit("codechange", msg);
+        socket.emit("codechange",{code: data});
     });
 
     // CSS Editor
