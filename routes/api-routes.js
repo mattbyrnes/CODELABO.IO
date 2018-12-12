@@ -15,13 +15,22 @@ module.exports = function (app) {
     // CREATE Project
     app.post('/api/project', function (req, res) {
         console.log(req.body);
-        db.Project.create(req.body)
-            .then(function (dbProject) {
-                res.json(dbProject);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+
+        const projectData = {
+            html: req.body.html,
+            css: req.body.css,
+            js: req.body.javascript,
+            name: 'new project'
+        }
+
+        db.Project.create(projectData, function (err, dbProject) {
+            if (err) {
+				return res.json(err)
+			} else {
+				console.log(user)
+				//return res.redirect('/profile');
+			}
+		});
     });
 
     // UPDATE Project

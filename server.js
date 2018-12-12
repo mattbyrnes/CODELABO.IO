@@ -105,16 +105,16 @@ mongoose.Promise = global.Promise;
 //     process.env.MONGODB_URI ||  "mongodb://localhost:27017/codelaborate", {
 //  });
 
-mongoose.connect('mongodb://codelabouser:codelabopass1@ds131954.mlab.com:31954/heroku_1m80w7kx', { useNewUrlParser: true });
+// mongoose.connect('mongodb://codelabouser:codelabopass1@ds131954.mlab.com:31954/heroku_1m80w7kx', { useNewUrlParser: true });
 
 
  //// USER END ////
 
 
 // OLD Mongoose
-// mongoose.connect('mongodb://localhost/codelaborate', {
-//   useNewUrlParser: true
-// });
+mongoose.connect('mongodb://localhost/codelaborate', {
+  useNewUrlParser: true
+});
 
 // Routes
 require('./sockets/sockets')(io);
