@@ -85,6 +85,8 @@ label {
 }
 
 .project-col {
+    position: absolute;
+    right: 0;
     width: 20vw;
     height: 100vh;
     float: right;

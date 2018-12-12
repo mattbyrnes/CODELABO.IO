@@ -24,6 +24,19 @@ module.exports = function (app) {
             });
     });
 
+     // Add Project
+     app.post('/add', function (req, res) {
+        console.log(req.body);
+        db.Project.create(req.body)
+            .then(function (dbProject) {
+                res.json(dbProject);
+                console.log('add',dbProject)
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
     // UPDATE Project
     app.put('/api/project/:name', function (req, res) {
         db.Project.findOneAndUpdate({name: req.body.name})

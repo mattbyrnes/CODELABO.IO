@@ -1,5 +1,37 @@
 $(document).ready(function () {
 
+    var url = window.location.href;
+    var projectId = url.split("/");
+    var projectId = projectId[4];
+    console.log(projectId);
+
+    const createProject = function (e) {
+        e.preventDefault()
+        console.log("clicked")
+        let testObj = { 
+            html: '<h1>Hello World</h1>', 
+            css: '<style></style>', 
+            javascript: '<script></script>', 
+            name: 'Untitled Project'
+        }
+
+        // let divBody = $('#input-content').map(function () { return $('#bodyDoc').html() }).get()
+        // let bodyStrng = divBody[0];
+        // const newDocument = {
+        //     docTitle: $('#input-title').val(),
+        //     docContent: bodyStrng
+        // };
+
+        // localStorage.setItem('doczAutoSave' + document.location, newDocument)
+        $.post({ url: '/add', method: 'POST', data: testObj }).then(function (res) {
+            console.log(res)
+        });
+
+    }
+
+    $("#btn-create").click(createProject);
+
+
     const socket = io();
 
     var code = $("#htmlEditor")[0];
@@ -21,7 +53,6 @@ $(document).ready(function () {
         })
     };
 
-
     // HTML Editor
     var editor = CodeMirror.fromTextArea(code, {
         mode: "xml",
@@ -33,7 +64,8 @@ $(document).ready(function () {
         foldGutter: true,
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
     });
-    editor.on('change', function () {
+    editor.on('keyup', function (e) {
+        // e.preventDefault();
         clearTimeout(delay);
         delay = setTimeout(updatePreview, 300);
         var msg = {
@@ -98,5 +130,11 @@ $(document).ready(function () {
         preview.close();
     }
     setTimeout(updatePreview, 300);
+    
+    socket.on('usercodechange', (data) => {
+         e.preventDefault();
+        console.log("codechange data", data.message.html)
+        editor.setValue(data.message.html)
+    })
 
 });
