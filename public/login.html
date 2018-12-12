@@ -17,20 +17,51 @@
         <div class="edit-col">
             <h2 id="project-title">CODELABO</h2>
 
-            <label>HTML</label>
-            <textarea id="htmlEditor"><h1>Hello World</h1></textarea>
+<label>HTML</label>
+<textarea id="htmlEditor">
+<section>
+    <h2>Welcome to CODELABO</h2>
+    <p>This is a basic template that performs the following equation.</p>
+    <p>The process will add 10 to the integer and then divide by 2.</p>
+    <hr>
+    <p><em>Integer</em>: <span id="somevalue">59</span></p>
+    <hr>
+    <div id="output"></div>
+</section>
+</textarea>
 
-            <label>CSS</label>
-            <textarea id="cssEditor">
+<label>CSS</label>
+<textarea id="cssEditor">
 <style>
-    h1 {
-        color: red;
+    section {
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 500px;
+        background-color: ghostwhite;
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    h2 {
+        margin: 0px;
+        color: hotpink;
     }
 </style>
 </textarea>
 
-            <label>JS</label>
-            <textarea id="jsEditor"><script></script></textarea>
+<label>JS</label>
+<textarea id="jsEditor">
+<script>
+// Input: get input and convert string to an integer
+let x = parseInt(document.getElementById('somevalue').innerHTML);
+
+// Processing: formula processing with the variable
+let result = (x + 10) / 2;
+
+// Output: round to one decimal and output string with HTML to innerHTML of a div
+document.getElementById('output').innerHTML = "The result is <strong>" + result.toFixed(1) + "</strong>";
+</script>
+</textarea>
 
         </div>
 
