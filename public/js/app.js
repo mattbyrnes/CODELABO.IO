@@ -99,4 +99,39 @@ $(document).ready(function () {
     }
     setTimeout(updatePreview, 300);
 
+
+    const saveProject = function (event) {
+        event.preventDefault();
+        const html = $("#htmlEditor").val();
+        const css = $("#cssEditor").val();
+        const js = $("#jsEditor").val();
+        socket.emit("save-project", { html: html, css: css, js: js });
+        $("#htmlEditor").val("");
+        $("#cssEditor").val("");
+        $("#jsEditor").val("");
+    };
+
+    $("#btn-save").on("click", saveProject);
+
+    function getProjects() {
+
+        $("#projectlist").empty();
+        
+        $.get("api/project", function (data) {
+            data.forEach(e => {
+
+                $("#projectlist").append(
+                    `<li id="${e._id}">
+                        <p>${e.name}</p>
+                    </li>`
+                );
+                
+            });
+        });
+    };
+
+    getProjects();
+
+
+
 });

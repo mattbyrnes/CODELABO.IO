@@ -85,7 +85,10 @@ label {
 }
 
 .project-col {
-    width: 20vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10vw;
     height: 100vh;
     float: right;
     background: #eee;

@@ -25,6 +25,17 @@ module.exports = function (io) {
         });
 
     });
+
+    io.on('connection', function (socket) {
+		socket.on('save-function', function (data) {
+			db.Project.create(data)
+				// .then(function (data) {
+				// 	io.emit('render-project', data);
+				// })
+		})
+	})
+
 }
 
+// socket.on('save-project', (d) => {}
 // {html:data.html, css:data.css, javascript:data.javascript}
