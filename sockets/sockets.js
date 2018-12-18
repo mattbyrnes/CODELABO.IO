@@ -4,21 +4,20 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
-        let testObj = { 
-            html: '<h1>Hello World</h1>', 
-            css: '<style></style>', 
-            javascript: '<script></script>', 
-            name: 'Untitled Project'
-        }
+        // let testObj = { 
+        //     html: '<h1>Hello World</h1>', 
+        //     css: '<style></style>', 
+        //     javascript: '<script></script>', 
+        //     name: 'Untitled Test Project'
+        // }
+        // db.Project.create(testObj);
 
-        db.Project.create(testObj);
         console.log('connected');
 
-        socket.on('codechange', (data) => {
 
+        socket.on('codechange', (data) => {
             db.Project.findByIdAndUpdate({ _id: data._id }, { $set: data })
                 .catch(err => { console.log(err) })
-
             io.emit('codechange', {
                 message: data
             });

@@ -18,8 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-
-
 //// USER START ////
 
 // User: set morgan to log info about our requests for development use.
@@ -97,19 +95,9 @@ app.route('/login')
     });
 });
 
-//Mongoose connection ** HAVE TO EDIT URI ***
 mongoose.Promise = global.Promise;
-//mongoose.connect('mongodb://localhost:27017/myapp');
-
-// mongoose.connect(
-//     process.env.MONGODB_URI ||  "mongodb://localhost:27017/codelaborate", {
-//  });
 
 mongoose.connect('mongodb://codelabouser:codelabopass1@ds131954.mlab.com:31954/heroku_1m80w7kx', { useNewUrlParser: true });
-
-
- //// USER END ////
-
 
 // OLD Mongoose
 // mongoose.connect('mongodb://localhost/codelaborate', {
@@ -131,6 +119,3 @@ app.use(function (req, res, next) {
 server.listen(PORT, function () {
   console.log(`App running on port ${PORT}`);
 });
-
-
-
