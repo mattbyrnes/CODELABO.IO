@@ -7,7 +7,6 @@ $(document).ready(function () {
                 $("#projectlist").append(
                     `
                     <a class="open-project" id='${e._id}' href="/edit/${e._id}">${e.name}</a><br />
-                    <p><input id="${e._id}" class="" value="${e.name}"></input></p>
                     `
                 );
             });

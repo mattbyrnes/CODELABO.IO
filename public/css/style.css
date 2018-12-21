@@ -6,20 +6,34 @@
     z-index: 1;
     right: 0px;
     top: 0;
-    width: 100px;
+    width: 200px;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: #111;
   }
   
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #111;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 80%;
+    color: #fff;
+  }
+
+  .modal-content a {
+    display: block;
+    color: #ddd;
+    font-size: 11px;
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 7px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #666;
+  }
+
+  .modal-content a:hover {
+    color: hotpink;
   }
   
   /* The Close Button */
