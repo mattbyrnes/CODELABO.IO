@@ -1,0 +1,190 @@
+
+
+
+<label>HTML</label>
+    <textarea id="htmlEditor">
+<section>
+<h2>Welcome to CODELABO</h2>
+<p>This is a basic template that performs the following equation.</p>
+<p>The process will add 10 to the integer and then divide by 2.</p>
+<hr>
+<p><em>Integer</em>: <span id="somevalue">59</span></p>
+<hr>
+<div id="output"></div>
+</section>
+</textarea>
+
+<label>CSS</label>
+<textarea id="cssEditor">
+<style>
+section {
+font-family: Arial, Helvetica, sans-serif;
+max-width: 500px;
+background-color: ghostwhite;
+padding: 20px;
+border-radius: 10px;
+margin: auto;
+}
+
+h2 {
+margin: 0px;
+color: hotpink;
+}
+</style>
+</textarea>
+
+
+
+<label>JS</label>
+<textarea id="jsEditor">
+<script>
+// Input: get input and convert string to an integer
+let x = parseInt(document.getElementById('somevalue').innerHTML);
+
+// Processing: formula processing with the variable
+let result = (x + 10) / 2;
+
+// Output: round to one decimal and output string with HTML to innerHTML of a div
+document.getElementById('output').innerHTML = "The result is <strong>" + result.toFixed(1) + "</strong>";
+</script>
+</textarea>
+
+
+
+
+
+<div class="docArea" contenteditable="true" id ="bodyProject" value=""></div>
+
+
+
+<!-- START STATIC EDITOR -->
+
+<div class="edit-col">
+
+        <label>HTML</label>
+        <textarea id="htmlEditor"></textarea>
+        
+        <label>CSS</label>
+        <textarea id="cssEditor">
+        <style>
+        h1 {
+            color: hotpink;
+        }
+        </style>
+        </textarea>
+        
+        <label>JS</label>
+        <textarea id="jsEditor">
+        <script>
+            let x = parseInt(document.getElementById('somevalue').innerHTML);
+            let result = (x + 10) / 2;
+            document.getElementById('output').innerHTML = "The result is <strong>" + result.toFixed(1) + "</strong>";
+        </script>
+        </textarea>
+        
+        </div>
+        
+        <div class="preview-col">
+            <Label>Preview</label>
+            <iframe id="preview"></iframe>
+        </div>
+        
+        <!-- END: STATIC EDITOR -->
+
+
+        const getSelProject = function () {
+            $.ajax({ url: `/api/project/${projectId}`, method: "GET" })
+              .then(function (dbLoad) {
+                const projectCode = (
+                  `
+                <div class="edit-col">
+                  <h2 id="project-title">${dbLoad.name}</h2>  
+                  <label>HTML</label>
+                  <textarea id="htmlEditor">
+                    ${dbLoad.html}
+                    </textarea>
+                  <textarea id="cssEditor">${dbLoad.css}</textarea>
+                  <textarea id="jsEditor">${dbLoad.javascript}</textarea>
+                </div>
+                <div class="preview-col">
+                  <Label>Preview</label>
+                  <iframe id="preview"></iframe>
+                </div>
+            `
+                );
+                $('#projectEdit').html(projectCode);
+
+
+                import React from 'react';
+                import ReactDOM from 'react-dom';
+                
+                const Inventory = (props) => (
+                  <div>
+                    <h1>Book List</h1>
+                    {props.bookList.map((book, i) => (
+                            <Books 
+                              title={book.title} 
+                              author={book.author}
+                              key={i} 
+                            />))}
+                    <button onClick={props.handler}> a-z by Title </button>
+                  </div>
+                );
+                
+                const Books = (props) => (
+                  <div>
+                    <h2>Title: {props.title}</h2>
+                    <p>Author {props.author}</p>
+                  </div>
+                );
+                
+                class Library extends React.Component{
+                  state = {
+                    books: [
+                      { title: 'Harry Potter', author: 'JK Rowling'},
+                      { title: 'Universe in a Nutshell', author: 'Stephen Hawking'},
+                      { title: 'Design Principles', author: 'Gang of Four'},
+                      { title: 'Lexicon', author: 'Max Barry'},
+                      { title: 'The Codex', author: 'Lev Grossman'},
+                      { title: 'Song of Solomon', author: 'Toni Morrison'},
+                    ]
+                  }
+                
+                  clickHandler = () => {
+                    
+                    // Copies the books array from state and stores it in a new Array
+                    const newArray = this.state.books;
+                
+                    // Our compare function that will be used in .sort()
+                    const compareFunction = (a, b) => {
+                
+                      const titleA = a.title;
+                      const titleB = b.title;
+                
+                      let compare = 0;
+                      if (titleA > titleB) {
+                        compare = 1;
+                      } else if (titleA < titleB) {
+                        compare = -1;
+                      }
+                
+                      return compare
+                    }
+                
+                    // Stores our sorted array of objects in a variable called books
+                    const sortedBooks = newArray.sort(compareFunction);
+                
+                    // We then tell React that the `books` array in our state should be updated to our new array, `sortedBooks`.
+                    this.setState({books: sortedBooks});
+                  }
+                
+                  render(){
+                    return (
+                      <div>
+                          <Inventory bookList={this.state.books} handler={this.clickHandler}/>
+                      </div>
+                    )
+                  }
+                }
+                
+                ReactDOM.render(<Library />, document.getElementById("root"));                

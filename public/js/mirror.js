@@ -1,32 +1,17 @@
 $(document).ready(function () {
 
-    function getProjects() {
-        $("#projectlist").empty();
-        $.get("api/project", function (data) {
-            data.forEach(e => {
-                $("#projectlist").append(
-                    `
-                    <a class="open-project" id='${e._id}' href="/edit/${e._id}">${e.name}</a><br />
-                    `
-                );
-            });
-        });
-    };
-
-    getProjects();
-
     const socket = io();
 
     var code = $("#htmlEditor")[0];
     var cssCode = $("#cssEditor")[0];
     var jsCode = $("#jsEditor")[0];
-
+  
     const submitCode = function (e, fileType) {
         const html = $htmlEditor.val()
         const css = $cssEditor.val()
         const js = $(this).val()
         console.log(js)
-
+  
         socket.emit('codechange', {
             user: state.user,
             html: html,
@@ -35,7 +20,7 @@ $(document).ready(function () {
             iframe: iframe
         })
     };
-
+  
     // HTML Editor
     var editor = CodeMirror.fromTextArea(code, {
         mode: "xml",
@@ -110,21 +95,5 @@ $(document).ready(function () {
         preview.close();
     }
     setTimeout(updatePreview, 300);
-
-
-    // Get Save Project
-
-    const saveProject = function (event) {
-        event.preventDefault();
-        const html = $("#htmlEditor").val();
-        const css = $("#cssEditor").val();
-        const js = $("#jsEditor").val();
-        socket.emit("save-project", { html: html, css: css, js: js });
-        $("#htmlEditor").val("");
-        $("#cssEditor").val("");
-        $("#jsEditor").val("");
-    };
-
-    $("#btn-save").on("click", saveProject);
 
 });

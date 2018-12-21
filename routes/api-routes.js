@@ -12,6 +12,19 @@ module.exports = function (app) {
             });
     });
 
+
+     // Get Selected Project
+     app.get('/api/project/:Id', function (req, res) {
+        console.log(req.body);
+        db.Project.findOne({_id: req.params.Id})
+            .then(function (dbProject) {
+                res.json(dbProject);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
     // CREATE Project
     app.post('/api/project', function (req, res) {
         console.log(req.body);
