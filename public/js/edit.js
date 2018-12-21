@@ -9,7 +9,6 @@ $(document).ready(function () {
         const projectItem = data.map((e) =>
           `
               <a class="open-project" id='${e._id}' href="/edit/${e._id}">${e.name}</a><br />
-              <p><input id="${e._id}" class="" value="${e.name}"></input></p>
               `
         )
         $('#projectlist').html(projectItem);
@@ -25,45 +24,45 @@ $(document).ready(function () {
 
   const getProject = function (dbGet) {
     $.ajax({ url: `/api/project/${projectId}`, method: "GET" })
-    {dbGet.name}
-    {dbGet.html}
+    { dbGet.name }
+    { dbGet.html }
   }
 
   getProject();
 
-//   const getDoc = function () {
-//     $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
-//       let docBody = $.parseHTML(dbLoad.docContent);
-//       const docItem = (
-//         `
-//         <form>
-//         <div class="edit-col">
-//           <h2 id="project-title">${dbLoad.name}</h2> 
-//           <textarea id="htmlEditor">${dbLoad.html}</textarea>
-//           <textarea id="cssEditor">${dbLoad.css}</textarea>
-//           <textarea id="jsEditor">${dbLoad.javascript}</textarea>
-//         </div>
+  //   const getDoc = function () {
+  //     $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
+  //       let docBody = $.parseHTML(dbLoad.docContent);
+  //       const docItem = (
+  //         `
+  //         <form>
+  //         <div class="edit-col">
+  //           <h2 id="project-title">${dbLoad.name}</h2> 
+  //           <textarea id="htmlEditor">${dbLoad.html}</textarea>
+  //           <textarea id="cssEditor">${dbLoad.css}</textarea>
+  //           <textarea id="jsEditor">${dbLoad.javascript}</textarea>
+  //         </div>
 
-//         <div class="preview-col">
-//           <Label>Preview</label>
-//           <iframe id="preview"></iframe>
-//         </div>
-//         </form>
-//         <form>
-//           <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
-//           <input type="hidden" id="input-content" />
-//         </form>
-//         `
-//         );
+  //         <div class="preview-col">
+  //           <Label>Preview</label>
+  //           <iframe id="preview"></iframe>
+  //         </div>
+  //         </form>
+  //         <form>
+  //           <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
+  //           <input type="hidden" id="input-content" />
+  //         </form>
+  //         `
+  //         );
 
-//     $('#gdocEdit').html(docItem);
-//     $('#bodyDoc').html(docBody)
-//     $('#saveNew').on('click', createDoc);
-//     $('#updateNew').on('click', updateDoc);
-//   })
-// };
+  //     $('#gdocEdit').html(docItem);
+  //     $('#bodyDoc').html(docBody)
+  //     $('#saveNew').on('click', createDoc);
+  //     $('#updateNew').on('click', updateDoc);
+  //   })
+  // };
 
-// getDoc();
+  // getDoc();
 
   var code = $("#htmlEditor")[0];
   var cssCode = $("#cssEditor")[0];
