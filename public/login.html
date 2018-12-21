@@ -70,14 +70,26 @@ document.getElementById('output').innerHTML = "The result is <strong>" + result.
             <iframe id="preview"></iframe>
         </div>
 
-        <div class="project-col">
-            <button>Save Project</button>
-            <div id="projectlist">
-            </div>
-            <!-- <div class="username">Username</div> -->
-        </div>
-
     </form>
+
+
+<!-- Trigger/Open The Modal -->
+<button id="saveButton" style="position: absolute; top: 10px; right: 10px;">Save Project</button>
+<button id="myBtn" style="position: absolute; top: 50px; right: 10px;">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <div id="projectlist">
+        </div>
+  </div>
+
+</div>
+
 
     <script src="js/login.js"></script>
 
@@ -92,5 +104,34 @@ document.getElementById('output').innerHTML = "The result is <strong>" + result.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 
     <script src="js/app.js"></script>
+
+    
+<script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
 
 </body>

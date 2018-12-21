@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="/codemirror/lib/codemirror.css" rel="stylesheet">
-    <link rel="stylesheet" href="/codemirror/theme/monokai.css">
+    <link href="/css/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/monokai.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>CODELABO</title>
@@ -14,90 +14,43 @@
 <body>
 
     <form>
-        <div id="projectEdit">
-            Project info here:
-        </div>
-
         <div class="edit-col">
-            <h2 id="project-title">CODELABO</h2>
-
-<label>HTML</label>
-<textarea id="htmlEditor">
-<section>
-    <h2>Welcome to CODELABO</h2>
-    <p>This is a basic template that performs the following equation.</p>
-    <p>The process will add 10 to the integer and then divide by 2.</p>
-    <hr>
-    <p><em>Integer</em>: <span id="somevalue">59</span></p>
-    <hr>
-    <div id="output"></div>
-</section>
-</textarea>
-
-<label>CSS</label>
-<textarea id="cssEditor">
-<style>
-    section {
-        font-family: Arial, Helvetica, sans-serif;
-        max-width: 500px;
-        background-color: ghostwhite;
-        padding: 20px;
-        border-radius: 10px;
-        margin: auto;
-    }
-
-    h2 {
-        margin: 0px;
-        color: hotpink;
-    }
-</style>
-</textarea>
-
-<label>JS</label>
-<textarea id="jsEditor">
-<script>
-// Input: get input and convert string to an integer
-let x = parseInt(document.getElementById('somevalue').innerHTML);
-
-// Processing: formula processing with the variable
-let result = (x + 10) / 2;
-
-// Output: round to one decimal and output string with HTML to innerHTML of a div
-document.getElementById('output').innerHTML = "The result is <strong>" + result.toFixed(1) + "</strong>";
-</script>
-</textarea>
-
+            <h2 id="project-title">${dbLoad.name}</h2>
+            <textarea id="htmlEditor">${dbLoad.html}</textarea>
+            <textarea id="cssEditor">${dbLoad.css}</textarea>
+            <textarea id="jsEditor">${dbLoad.javascript}</textarea>
         </div>
-
         <div class="preview-col">
             <Label>Preview</label>
             <iframe id="preview"></iframe>
         </div>
-
-        <div class="project-col">
-            <button id="btn-save">Save Project</button>
-            <div id="projectlist">
-            </div>
-            <!-- <div class="username">Username</div> -->
-        </div>
-
     </form>
 
-    <!-- <script src="/js/login.js"></script> -->
+    <!-- <form >
+        <textarea id="htmlEditor">
+        </textarea>
+    </form> -->
+    <!-- <form id="gdocEdit">
+        <textarea id="htmlEditor">
+        </textarea>
+    </form> -->
 
+    <div class="project-col">
+        <button id="btn-save">Save Project</button>
+        <div id="projectlist">
+        </div>
+    </div>
+
+    <!-- <script src="/js/login.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-
     <script src="/codemirror/lib/codemirror.js"></script>
     <script src="/codemirror/mode/xml/xml.js"></script>
     <script src="/codemirror/mode/css/css.js"></script>
     <script src="/codemirror/mode/javascript/javascript.js"></script>
     <script src="/codemirror/addon/edit/closetag.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-    
-    <script src="/js/edit.js"></script>
-    <!-- <script src="/js/mirror.js"></script> -->
-    <!-- <script src="/js/app.js"></script> -->
 
+    <script src="/js/edit.js"></script>
 
 </body>

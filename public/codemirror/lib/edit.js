@@ -2,6 +2,25 @@ $(document).ready(function () {
 
   const socket = io();
 
+  var code = $("#htmlEditor")[0];
+  var cssCode = $("#cssEditor")[0];
+  var jsCode = $("#jsEditor")[0];
+
+  // Socket Stuff //
+
+  // const submitCode = function (e, fileType) {
+  //   const html = $htmlEditor.val(e)
+  //   const css = $cssEditor.val(e)
+  //   const js = $(this).val(e)
+
+  //   socket.emit('codechange', {
+  //     html: html,
+  //     css: css,
+  //     js: js
+  //   })
+  // };
+
+
   //Get ALL Projects and List in Finder
   const getAllProjects = function () {
     $.getJSON('/api/project')
@@ -18,60 +37,47 @@ $(document).ready(function () {
   };
   getAllProjects();
 
-  // Get Project ID by URL
+  // Get Selected Project and Display in Editor
   var url = window.location.href;
   var projectId = url.split("/");
   var projectId = projectId[4];
 
-  const getProject = function (dbGet) {
-    $.ajax({ url: `/api/project/${projectId}`, method: "GET" })
-    {dbGet.name}
-    {dbGet.html}
-  }
+  const getDoc = function () {
+    $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
+      let docBody = $.parseHTML(dbLoad.docContent);
+      const docItem = (
+        `
+        <form>
+        <div class="edit-col">
+          <h2 id="project-title">${dbLoad.name}</h2> 
+          <textarea id="htmlEditor">${dbLoad.html}</textarea>
+          <textarea id="cssEditor">${dbLoad.css}</textarea>
+          <textarea id="jsEditor">${dbLoad.javascript}</textarea>
+        </div>
 
-  getProject();
+        <div class="preview-col">
+          <Label>Preview</label>
+          <iframe id="preview"></iframe>
+        </div>
+        </form>
+        <form>
+          <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
+          <input type="hidden" id="input-content" />
+        </form>
+        
+        `
+        );
 
-//   const getDoc = function () {
-//     $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
-//       let docBody = $.parseHTML(dbLoad.docContent);
-//       const docItem = (
-//         `
-//         <form>
-//         <div class="edit-col">
-//           <h2 id="project-title">${dbLoad.name}</h2> 
-//           <textarea id="htmlEditor">${dbLoad.html}</textarea>
-//           <textarea id="cssEditor">${dbLoad.css}</textarea>
-//           <textarea id="jsEditor">${dbLoad.javascript}</textarea>
-//         </div>
+    $('#gdocEdit').html(docItem);
+    $('#bodyDoc').html(docBody)
+    $('#saveNew').on('click', createDoc);
+    $('#updateNew').on('click', updateDoc);
+  })
+};
 
-//         <div class="preview-col">
-//           <Label>Preview</label>
-//           <iframe id="preview"></iframe>
-//         </div>
-//         </form>
-//         <form>
-//           <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
-//           <input type="hidden" id="input-content" />
-//         </form>
-//         `
-//         );
-
-//     $('#gdocEdit').html(docItem);
-//     $('#bodyDoc').html(docBody)
-//     $('#saveNew').on('click', createDoc);
-//     $('#updateNew').on('click', updateDoc);
-//   })
-// };
-
-// getDoc();
-
-  var code = $("#htmlEditor")[0];
-  var cssCode = $("#cssEditor")[0];
-  var jsCode = $("#jsEditor")[0];
-
+getDoc();
   // HTML Editor
   var editor = CodeMirror.fromTextArea(code, {
-    value: "function myScript(){return 100;}\n",
     mode: "xml",
     theme: "monokai",
     lineNumbers: true,
@@ -79,8 +85,7 @@ $(document).ready(function () {
     lineWrapping: true,
     extraKeys: { "Ctrl-Q": function (cm) { cm.foldCode(cm.getCursor()); } },
     foldGutter: true,
-    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-
+    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
   });
   editor.on('change', function () {
     clearTimeout(delay);
