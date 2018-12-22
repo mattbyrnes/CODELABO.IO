@@ -1,7 +1,4 @@
-
-
 $(document).ready(function () {
-
 
   const socket = io();
 
@@ -11,8 +8,8 @@ $(document).ready(function () {
       .then(function (data) {
         const projectItem = data.map((e) =>
           `
-              <a class="open-project" id='${e._id}' href="/edit/${e._id}">${e.name}</a><br />
-              `
+            <a class="open-project" id='${e._id}' href="/edit/${e._id}">${e.name}</a><br />
+          `
         )
         $('#projectlist').html(projectItem);
         $('.fa-times').on('click', deleteDoc);
@@ -27,35 +24,17 @@ $(document).ready(function () {
 
     const getDoc = function () {
       $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
-        // let docBody = $.parseHTML(dbLoad.docContent);
-       
-        const docItem = (
-          `
-          <form>
-          <div class="edit-col">
-            <h2 id="project-title">${dbLoad.name}</h2> 
-            <textarea id="htmlEditor">${dbLoad.html}</textarea>
-            <textarea id="cssEditor">${dbLoad.css}</textarea>
-            <textarea id="jsEditor">${dbLoad.javascript}</textarea>
-          </div>
-          <div class="preview-col">
-            <Label>Preview</label>
-            <iframe id="preview"></iframe>
-          </div>
-          </form>
 
-          <form>
-            <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
-            <input type="hidden" id="input-content" />
-          </form>
-          
-          `
-          );
-          
-      $('#gdocEdit').append(docItem);
-      // $('#bodyDoc').html(docBody)
-      // $('#saveNew').on('click', createDoc);
-      // $('#updateNew').on('click', updateDoc);
+        let proHTML = $.parseHTML(dbLoad.html);
+        let proCSS = $.parseHTML(dbLoad.css);
+        let proJS = $.parseHTML(dbLoad.javascript);
+        let proName = $.parseHTML(dbLoad.name);
+
+      $('#project-title').append(proName);    
+      $('#htmlEditor').parseHTML(proHTML);
+      $('#cssEditor').append(proCSS);
+      $('#jsEditor').append(proJS);
+      $("#saveButton").on("click", saveProject);
     })
   };
 
@@ -64,6 +43,21 @@ $(document).ready(function () {
   var code = $("#htmlEditor")[0];
   var cssCode = $("#cssEditor")[0];
   var jsCode = $("#jsEditor")[0];
+
+
+// Save Project
+const saveProject = function (event) {
+  event.preventDefault();
+  const html = $("#htmlEditor").val();
+  const css = $("#cssEditor").val();
+  const js = $("#jsEditor").val();
+  socket.emit("save-project", { html: html, css: css, js: js });
+  $("#htmlEditor").val("");
+  $("#cssEditor").val("");
+  $("#jsEditor").val("");
+};
+
+$("#saveButton").on("click", saveProject);
 
   // HTML Editor
   var editor = CodeMirror.fromTextArea(code, {
@@ -143,22 +137,6 @@ $(document).ready(function () {
   setTimeout(updatePreview, 300);
 
 });
-
-
-  // Save Project
-  // const saveProject = function (event) {
-  //   event.preventDefault();
-  //   const html = $("#htmlEditor").val();
-  //   const css = $("#cssEditor").val();
-  //   const js = $("#jsEditor").val();
-  //   socket.emit("save-project", { html: html, css: css, js: js });
-  //   $("#htmlEditor").val("");
-  //   $("#cssEditor").val("");
-  //   $("#jsEditor").val("");
-  // };
-
-  // $("#btn-save").on("click", saveProject);
-
 
   //Create Project
   // const createProject = function () {

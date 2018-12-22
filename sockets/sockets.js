@@ -13,8 +13,6 @@ module.exports = function (io) {
         // db.Project.create(testObj);
 
         console.log('connected');
-
-
         socket.on('codechange', (data) => {
             db.Project.findByIdAndUpdate({ _id: data._id }, { $set: data })
                 .catch(err => { console.log(err) })
@@ -28,9 +26,9 @@ module.exports = function (io) {
     io.on('connection', function (socket) {
 		socket.on('save-function', function (data) {
 			db.Project.create(data)
-				// .then(function (data) {
-				// 	io.emit('render-project', data);
-				// })
+				.then(function (data) {
+					io.emit('render-project', data);
+				})
 		})
 	})
 
