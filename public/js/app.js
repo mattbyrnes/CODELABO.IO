@@ -36,6 +36,20 @@ $(document).ready(function () {
         })
     };
 
+    // Save Project
+    const saveProject = function (event) {
+        event.preventDefault();
+        const html = $("#htmlEditor").val();
+        const css = $("#cssEditor").val();
+        const js = $("#jsEditor").val();
+        socket.emit("save-project", { html: html, css: css, js: js });
+        $("#htmlEditor").val("");
+        $("#cssEditor").val("");
+        $("#jsEditor").val("");
+    };
+
+    $("#saveButton").on("click", saveProject);
+
     // HTML Editor
     var editor = CodeMirror.fromTextArea(code, {
         mode: "xml",
@@ -110,21 +124,5 @@ $(document).ready(function () {
         preview.close();
     }
     setTimeout(updatePreview, 300);
-
-
-    // Get Save Project
-
-    const saveProject = function (event) {
-        event.preventDefault();
-        const html = $("#htmlEditor").val();
-        const css = $("#cssEditor").val();
-        const js = $("#jsEditor").val();
-        socket.emit("save-project", { html: html, css: css, js: js });
-        $("#htmlEditor").val("");
-        $("#cssEditor").val("");
-        $("#jsEditor").val("");
-    };
-
-    $("#btn-save").on("click", saveProject);
 
 });
