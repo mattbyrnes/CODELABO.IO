@@ -1,3 +1,31 @@
+a {
+    color: hotpink;
+    text-decoration: none;
+}
+
+.save-btn {
+    width: 110px;
+    position: absolute; 
+    top: 10px; 
+    right: 20px;
+    background: hotpink;
+    border-radius: 40px;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #eee;
+}
+
+.projects-btn {
+    width: 110px;
+    position: absolute; 
+    top: 60px; 
+    right: 20px;
+    background: #111;
+    border-radius: 40px;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #eee;
+}
 
 /* The Modal (background) */
 .modal {
@@ -74,6 +102,7 @@ background: #555;
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background: #111;
 }
 
 label {
@@ -85,6 +114,7 @@ label {
     display: block;
     width: 400px;
     margin: 100px auto 20px;
+    color: #fff;
 }
 
 .sign-in-modal {
@@ -109,7 +139,7 @@ label {
 .sign-in-modal .btn {
    display: block;
    margin: 10px auto 20px; 
-   background: blue;
+   background: hotpink;
    color: #fff;
    padding: 10px 20px;
    box-sizing: border-box;
@@ -140,22 +170,35 @@ label {
     box-sizing: border-box;
 }
 
-#preview {
-    width: 100%;
-    height: 99vh;
-}
-
-.edit-col {
-    width: 30vw;
-    max-height: 100vh;
-	float: left;
-}
-
 .preview-col {
-    width: 60vw;
+    width: 70%;
     height: 100vh;
     float: left;
     background: #eee;
+    overflow: scroll;
+}
+
+#preview {
+    width: 100%;
+    height: 99vh;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.device {
+    width: 380px;
+    height: 600px;
+    /* background: url(../images/mobile.png); */
+    background: #ddd;
+    border-radius: 30px;
+    padding: 30px 10px;
+    margin: 20px auto;
+}
+
+.edit-col {
+    width: 30%;
+    max-height: 100vh;
+	float: left;
 }
 
 .project-col {

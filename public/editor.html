@@ -13,9 +13,13 @@
 
 <body>
 
-    <form id="gdocEdit">
-        <!-- This is where the document editor loads -->
-    </form>
+    <div class="edit-col">
+        <form>
+            <textarea id="htmlEditor"></textarea>
+
+        </form>
+
+    </div>
 
     <!-- <form>
         <div class="edit-col">
@@ -29,8 +33,6 @@
             <iframe id="preview"></iframe>
         </div>
     </form> -->
-
-
 
     <!-- Trigger/Open The Modal -->
     <button id="saveButton" class="save-btn">Save Project</button>
@@ -48,7 +50,7 @@
         <!-- <script src="/js/login.js"></script> -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-        <script src="/codemirror/lib/codemirror.js"></script>
+        <script src="/js/codemirror.js"></script>
         <script src="/codemirror/mode/xml/xml.js"></script>
         <script src="/codemirror/mode/css/css.js"></script>
         <script src="/codemirror/mode/javascript/javascript.js"></script>
@@ -84,6 +86,5 @@
                 }
             }
         </script>
-
 
 </body>
