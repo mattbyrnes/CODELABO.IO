@@ -1,7 +1,4 @@
-
-
 $(document).ready(function () {
-
 
   const socket = io();
 
@@ -29,30 +26,14 @@ $(document).ready(function () {
       $.ajax({ url: `/api/project/${projectId}`, method: "GET" }).then(function (dbLoad) {
         // let docBody = $.parseHTML(dbLoad.docContent);
        
-        const docItem = (
-          `
-          <form>
-          <div class="edit-col">
-            <h2 id="project-title">${dbLoad.name}</h2> 
-            <textarea id="htmlEditor">${dbLoad.html}</textarea>
-            <textarea id="cssEditor">${dbLoad.css}</textarea>
-            <textarea id="jsEditor">${dbLoad.javascript}</textarea>
-          </div>
-          <div class="preview-col">
-            <Label>Preview</label>
-            <iframe id="preview"></iframe>
-          </div>
-          </form>
-
-          <form>
-            <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
-            <input type="hidden" id="input-content" />
-          </form>
+        // const docItem = (
+        //   `
+        //   ${dbLoad.html}
           
-          `
-          );
+        //   `
+        //   );
           
-      $('#gdocEdit').append(docItem);
+      $('#htmlEditor').html(dbLoad.html);
       // $('#bodyDoc').html(docBody)
       // $('#saveNew').on('click', createDoc);
       // $('#updateNew').on('click', updateDoc);
